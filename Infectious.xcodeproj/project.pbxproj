@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC6537F92427F67F002AB03D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCD6994D2427B2CC00CAA829 /* Charts.framework */; };
+		DC6537FA2427F67F002AB03D /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DCD6994D2427B2CC00CAA829 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DC6538082427FEE5002AB03D /* LineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6538072427FEE5002AB03D /* LineViewController.swift */; };
+		DC65380C2428131C002AB03D /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65380B2428131C002AB03D /* MainSplitViewController.swift */; };
 		DCD585B324268D3E0043E687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD585B224268D3E0043E687 /* AppDelegate.swift */; };
 		DCD585B524268D3E0043E687 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DCD585B424268D3E0043E687 /* GameScene.sks */; };
 		DCD585B724268D3E0043E687 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = DCD585B624268D3E0043E687 /* Actions.sks */; };
@@ -16,7 +20,40 @@
 		DCD585C024268D400043E687 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCD585BE24268D400043E687 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		DCD6994C2427B2CC00CAA829 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DCD699472427B2CC00CAA829 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		DCD6994E2427B2CC00CAA829 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DCD699472427B2CC00CAA829 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DC6537FB2427F67F002AB03D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DC6537FA2427F67F002AB03D /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		DC6538072427FEE5002AB03D /* LineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineViewController.swift; sourceTree = "<group>"; };
+		DC65380B2428131C002AB03D /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		DCD585AF24268D3E0043E687 /* Infectious.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Infectious.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCD585B224268D3E0043E687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCD585B424268D3E0043E687 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -27,6 +64,7 @@
 		DCD585BF24268D400043E687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DCD585C124268D400043E687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCD585C224268D400043E687 /* Infectious.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Infectious.entitlements; sourceTree = "<group>"; };
+		DCD699472427B2CC00CAA829 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../../Downloads/Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,17 +72,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC6537F92427F67F002AB03D /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC6537F82427F67F002AB03D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DCD585A624268D3E0043E687 = {
 			isa = PBXGroup;
 			children = (
+				DCD699472427B2CC00CAA829 /* Charts.xcodeproj */,
 				DCD585B124268D3E0043E687 /* Infectious */,
 				DCD585B024268D3E0043E687 /* Products */,
+				DC6537F82427F67F002AB03D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,12 +112,23 @@
 				DCD585B624268D3E0043E687 /* Actions.sks */,
 				DCD585B824268D3E0043E687 /* GameScene.swift */,
 				DCD585BA24268D3E0043E687 /* ViewController.swift */,
+				DC65380B2428131C002AB03D /* MainSplitViewController.swift */,
 				DCD585BC24268D400043E687 /* Assets.xcassets */,
 				DCD585BE24268D400043E687 /* Main.storyboard */,
+				DC6538072427FEE5002AB03D /* LineViewController.swift */,
 				DCD585C124268D400043E687 /* Info.plist */,
 				DCD585C224268D400043E687 /* Infectious.entitlements */,
 			);
 			path = Infectious;
+			sourceTree = "<group>";
+		};
+		DCD699482427B2CC00CAA829 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DCD6994D2427B2CC00CAA829 /* Charts.framework */,
+				DCD6994F2427B2CC00CAA829 /* ChartsTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +141,7 @@
 				DCD585AB24268D3E0043E687 /* Sources */,
 				DCD585AC24268D3E0043E687 /* Frameworks */,
 				DCD585AD24268D3E0043E687 /* Resources */,
+				DC6537FB2427F67F002AB03D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -118,12 +178,35 @@
 			mainGroup = DCD585A624268D3E0043E687;
 			productRefGroup = DCD585B024268D3E0043E687 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = DCD699482427B2CC00CAA829 /* Products */;
+					ProjectRef = DCD699472427B2CC00CAA829 /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				DCD585AE24268D3E0043E687 /* Infectious */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		DCD6994D2427B2CC00CAA829 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = DCD6994C2427B2CC00CAA829 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DCD6994F2427B2CC00CAA829 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = DCD6994E2427B2CC00CAA829 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DCD585AD24268D3E0043E687 /* Resources */ = {
@@ -144,8 +227,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC65380C2428131C002AB03D /* MainSplitViewController.swift in Sources */,
 				DCD585BB24268D3E0043E687 /* ViewController.swift in Sources */,
 				DCD585B924268D3E0043E687 /* GameScene.swift in Sources */,
+				DC6538082427FEE5002AB03D /* LineViewController.swift in Sources */,
 				DCD585B324268D3E0043E687 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +367,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Infectious/Infectious.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = WTR88VJ6Q4;
@@ -302,6 +388,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Infectious/Infectious.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = WTR88VJ6Q4;

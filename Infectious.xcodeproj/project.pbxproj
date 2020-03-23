@@ -10,14 +10,17 @@
 		DC6537F92427F67F002AB03D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCD6994D2427B2CC00CAA829 /* Charts.framework */; };
 		DC6537FA2427F67F002AB03D /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DCD6994D2427B2CC00CAA829 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC6538082427FEE5002AB03D /* LineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6538072427FEE5002AB03D /* LineViewController.swift */; };
-		DC65380C2428131C002AB03D /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65380B2428131C002AB03D /* MainSplitViewController.swift */; };
+		DC65380C2428131C002AB03D /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65380B2428131C002AB03D /* SplitViewController.swift */; };
+		DC697ACE24287A9800E9DBBB /* Read Me.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DC697ACD24287A9800E9DBBB /* Read Me.rtf */; };
 		DCD585B324268D3E0043E687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD585B224268D3E0043E687 /* AppDelegate.swift */; };
-		DCD585B524268D3E0043E687 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DCD585B424268D3E0043E687 /* GameScene.sks */; };
+		DCD585B524268D3E0043E687 /* AnimationScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DCD585B424268D3E0043E687 /* AnimationScene.sks */; };
 		DCD585B724268D3E0043E687 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = DCD585B624268D3E0043E687 /* Actions.sks */; };
-		DCD585B924268D3E0043E687 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD585B824268D3E0043E687 /* GameScene.swift */; };
-		DCD585BB24268D3E0043E687 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD585BA24268D3E0043E687 /* ViewController.swift */; };
+		DCD585B924268D3E0043E687 /* AnimationScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD585B824268D3E0043E687 /* AnimationScene.swift */; };
+		DCD585BB24268D3E0043E687 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD585BA24268D3E0043E687 /* AnimationViewController.swift */; };
 		DCD585BD24268D400043E687 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCD585BC24268D400043E687 /* Assets.xcassets */; };
 		DCD585C024268D400043E687 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCD585BE24268D400043E687 /* Main.storyboard */; };
+		DCEC74C82429323A008A0AD3 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEC74C72429323A008A0AD3 /* ContainerViewController.swift */; };
+		DCEC74CA24293E6D008A0AD3 /* Stuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEC74C924293E6D008A0AD3 /* Stuff.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,18 +56,21 @@
 
 /* Begin PBXFileReference section */
 		DC6538072427FEE5002AB03D /* LineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineViewController.swift; sourceTree = "<group>"; };
-		DC65380B2428131C002AB03D /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
+		DC65380B2428131C002AB03D /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		DC697ACD24287A9800E9DBBB /* Read Me.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Read Me.rtf"; sourceTree = "<group>"; };
 		DCD585AF24268D3E0043E687 /* Infectious.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Infectious.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCD585B224268D3E0043E687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DCD585B424268D3E0043E687 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		DCD585B424268D3E0043E687 /* AnimationScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AnimationScene.sks; sourceTree = "<group>"; };
 		DCD585B624268D3E0043E687 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		DCD585B824268D3E0043E687 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		DCD585BA24268D3E0043E687 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DCD585B824268D3E0043E687 /* AnimationScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationScene.swift; sourceTree = "<group>"; };
+		DCD585BA24268D3E0043E687 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		DCD585BC24268D400043E687 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCD585BF24268D400043E687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DCD585C124268D400043E687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCD585C224268D400043E687 /* Infectious.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Infectious.entitlements; sourceTree = "<group>"; };
 		DCD699472427B2CC00CAA829 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../../Downloads/Charts/Charts.xcodeproj; sourceTree = "<group>"; };
+		DCEC74C72429323A008A0AD3 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		DCEC74C924293E6D008A0AD3 /* Stuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stuff.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,15 +113,15 @@
 		DCD585B124268D3E0043E687 /* Infectious */ = {
 			isa = PBXGroup;
 			children = (
+				DC697ACD24287A9800E9DBBB /* Read Me.rtf */,
 				DCD585B224268D3E0043E687 /* AppDelegate.swift */,
-				DCD585B424268D3E0043E687 /* GameScene.sks */,
 				DCD585B624268D3E0043E687 /* Actions.sks */,
-				DCD585B824268D3E0043E687 /* GameScene.swift */,
-				DCD585BA24268D3E0043E687 /* ViewController.swift */,
-				DC65380B2428131C002AB03D /* MainSplitViewController.swift */,
+				DCD585B424268D3E0043E687 /* AnimationScene.sks */,
+				DCD585B824268D3E0043E687 /* AnimationScene.swift */,
+				DCEC74CB24295A44008A0AD3 /* ViewControllers */,
+				DCEC74C924293E6D008A0AD3 /* Stuff.swift */,
 				DCD585BC24268D400043E687 /* Assets.xcassets */,
 				DCD585BE24268D400043E687 /* Main.storyboard */,
-				DC6538072427FEE5002AB03D /* LineViewController.swift */,
 				DCD585C124268D400043E687 /* Info.plist */,
 				DCD585C224268D400043E687 /* Infectious.entitlements */,
 			);
@@ -129,6 +135,17 @@
 				DCD6994F2427B2CC00CAA829 /* ChartsTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		DCEC74CB24295A44008A0AD3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DC65380B2428131C002AB03D /* SplitViewController.swift */,
+				DCEC74C72429323A008A0AD3 /* ContainerViewController.swift */,
+				DCD585BA24268D3E0043E687 /* AnimationViewController.swift */,
+				DC6538072427FEE5002AB03D /* LineViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,9 +230,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCD585B524268D3E0043E687 /* GameScene.sks in Resources */,
+				DCD585B524268D3E0043E687 /* AnimationScene.sks in Resources */,
 				DCD585BD24268D400043E687 /* Assets.xcassets in Resources */,
 				DCD585B724268D3E0043E687 /* Actions.sks in Resources */,
+				DC697ACE24287A9800E9DBBB /* Read Me.rtf in Resources */,
 				DCD585C024268D400043E687 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,10 +245,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC65380C2428131C002AB03D /* MainSplitViewController.swift in Sources */,
-				DCD585BB24268D3E0043E687 /* ViewController.swift in Sources */,
-				DCD585B924268D3E0043E687 /* GameScene.swift in Sources */,
+				DC65380C2428131C002AB03D /* SplitViewController.swift in Sources */,
+				DCD585BB24268D3E0043E687 /* AnimationViewController.swift in Sources */,
+				DCD585B924268D3E0043E687 /* AnimationScene.swift in Sources */,
 				DC6538082427FEE5002AB03D /* LineViewController.swift in Sources */,
+				DCEC74C82429323A008A0AD3 /* ContainerViewController.swift in Sources */,
+				DCEC74CA24293E6D008A0AD3 /* Stuff.swift in Sources */,
 				DCD585B324268D3E0043E687 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

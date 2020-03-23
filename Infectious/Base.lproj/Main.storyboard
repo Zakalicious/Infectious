@@ -679,7 +679,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="54" y="6"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -695,7 +695,7 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="iPC-60-M4j" kind="relationship" relationship="window.shadowedContentViewController" id="qbN-vE-lOi"/>
+                        <segue destination="E3M-JS-948" kind="relationship" relationship="window.shadowedContentViewController" id="5VX-6n-iBE"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -711,7 +711,7 @@
                         <splitViewItem id="DYg-GS-8XX"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="tcp-5s-OBz">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="900" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <outlet property="delegate" destination="iPC-60-M4j" id="1UC-B8-AcR"/>
@@ -723,14 +723,77 @@
                         <segue destination="Ybc-Bx-LDl" kind="relationship" relationship="splitItems" id="XcJ-rV-r3d"/>
                     </connections>
                 </splitViewController>
+                <splitViewItem id="vU8-Oi-7gA"/>
                 <customObject id="vd1-Nm-Xqa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="752"/>
+            <point key="canvasLocation" x="-86" y="1049"/>
         </scene>
-        <!--View Controller-->
+        <!--Container View Controller-->
+        <scene sceneID="1OG-XN-sa8">
+            <objects>
+                <viewController id="E3M-JS-948" customClass="ContainerViewController" customModule="Infectious" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="fNe-FU-uGC">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="qi1-qv-ggQ">
+                                <rect key="frame" x="152" y="0.0" width="298" height="300"/>
+                                <connections>
+                                    <segue destination="iPC-60-M4j" kind="embed" id="ix9-Ge-H4B"/>
+                                </connections>
+                            </containerView>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nsK-vb-OAZ">
+                                <rect key="frame" x="47" y="230" width="58" height="50"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5H2-ZI-w3e">
+                                        <rect key="frame" x="-6" y="22" width="70" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0Ew-Cl-4cs">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="startSimulation:" target="E3M-JS-948" id="bV7-8G-q3a"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cgi-R4-aS5">
+                                        <rect key="frame" x="-6" y="-7" width="69" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Stop" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="o0L-Tz-qSr">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="stopSimulation:" target="E3M-JS-948" id="sW6-a9-oeB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="qi1-qv-ggQ" firstAttribute="leading" secondItem="fNe-FU-uGC" secondAttribute="leading" constant="152" id="7TU-sH-VIy"/>
+                            <constraint firstAttribute="bottom" secondItem="qi1-qv-ggQ" secondAttribute="bottom" id="DMv-W8-fuM"/>
+                            <constraint firstItem="nsK-vb-OAZ" firstAttribute="leading" secondItem="fNe-FU-uGC" secondAttribute="leading" constant="47" id="HGo-Ld-uFx"/>
+                            <constraint firstItem="nsK-vb-OAZ" firstAttribute="top" secondItem="fNe-FU-uGC" secondAttribute="top" constant="20" id="UAT-vf-M2C"/>
+                            <constraint firstItem="qi1-qv-ggQ" firstAttribute="top" secondItem="fNe-FU-uGC" secondAttribute="top" id="UaL-Q0-4Zs"/>
+                            <constraint firstAttribute="trailing" secondItem="qi1-qv-ggQ" secondAttribute="trailing" id="XRT-jm-JEl"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="EfM-tw-Sc1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="613" y="222"/>
+        </scene>
+        <!--Animation View Controller-->
         <scene sceneID="pPZ-ab-zWd">
             <objects>
-                <viewController id="Aou-pp-BKP" customClass="ViewController" customModule="Infectious" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Aou-pp-BKP" customClass="AnimationViewController" customModule="Infectious" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Sav-E1-4Zo" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -741,7 +804,7 @@
                 </viewController>
                 <customObject id="2TA-px-Ehn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="734" y="427"/>
+            <point key="canvasLocation" x="669" y="580"/>
         </scene>
         <!--Line View Controller-->
         <scene sceneID="DfI-jW-2mv">
@@ -757,7 +820,7 @@
                 </viewController>
                 <customObject id="9Jn-fj-uPe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="734" y="799"/>
+            <point key="canvasLocation" x="669" y="957"/>
         </scene>
     </scenes>
 </document>

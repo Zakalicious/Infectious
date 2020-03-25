@@ -679,7 +679,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="54" y="6"/>
+            <point key="canvasLocation" x="53" y="-131"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -688,7 +688,7 @@
                     <window key="window" title="Infectious" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="1140" y="664" width="480" height="400"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
@@ -700,7 +700,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="81" y="155"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="oiU-Aw-3jG">
@@ -727,18 +727,18 @@
                 </splitViewController>
                 <customObject id="vd1-Nm-Xqa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-86" y="1049"/>
+            <point key="canvasLocation" x="81" y="1202"/>
         </scene>
         <!--Container View Controller-->
         <scene sceneID="1OG-XN-sa8">
             <objects>
                 <viewController id="E3M-JS-948" customClass="ContainerViewController" customModule="Infectious" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="fNe-FU-uGC">
-                        <rect key="frame" x="0.0" y="0.0" width="452" height="150"/>
+                        <rect key="frame" x="0.0" y="0.0" width="750" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="qi1-qv-ggQ">
-                                <rect key="frame" x="152" y="0.0" width="300" height="150"/>
+                                <rect key="frame" x="150" y="0.0" width="600" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qi1-qv-ggQ" secondAttribute="height" multiplier="2:1" id="LEl-ka-2AD"/>
                                 </constraints>
@@ -746,11 +746,11 @@
                                     <segue destination="iPC-60-M4j" kind="embed" id="ix9-Ge-H4B"/>
                                 </connections>
                             </containerView>
-                            <stackView distribution="equalCentering" orientation="vertical" alignment="centerX" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nsK-vb-OAZ">
-                                <rect key="frame" x="0.0" y="50" width="152" height="80"/>
+                            <stackView canDrawConcurrently="YES" distribution="equalSpacing" orientation="vertical" alignment="centerX" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nsK-vb-OAZ">
+                                <rect key="frame" x="0.0" y="132" width="150" height="148"/>
                                 <subviews>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5H2-ZI-w3e">
-                                        <rect key="frame" x="41" y="52" width="70" height="32"/>
+                                    <button verticalHuggingPriority="750" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="5H2-ZI-w3e">
+                                        <rect key="frame" x="40" y="120" width="70" height="32"/>
                                         <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0Ew-Cl-4cs">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -760,7 +760,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cgi-R4-aS5">
-                                        <rect key="frame" x="42" y="21" width="69" height="32"/>
+                                        <rect key="frame" x="41" y="89" width="69" height="32"/>
                                         <buttonCell key="cell" type="push" title="Stop" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="o0L-Tz-qSr">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -770,19 +770,46 @@
                                         </connections>
                                     </button>
                                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gMa-iC-qCe">
-                                        <rect key="frame" x="24" y="-2" width="104" height="19"/>
+                                        <rect key="frame" x="23" y="69" width="104" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="xJS-u1-EYe"/>
                                             <constraint firstAttribute="height" constant="15" id="ytR-va-d8s"/>
                                         </constraints>
-                                        <sliderCell key="cell" state="on" alignment="left" maxValue="200" doubleValue="100" tickMarkPosition="above" sliderType="linear" id="RrH-go-9OI"/>
+                                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="200" doubleValue="100" tickMarkPosition="above" numberOfTickMarks="9" allowsTickMarkValuesOnly="YES" sliderType="linear" id="RrH-go-9OI"/>
                                         <connections>
                                             <action selector="applyForce:" target="E3M-JS-948" id="a2J-zB-X5B"/>
                                         </connections>
                                     </slider>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Jvb-lj-Wiw">
+                                        <rect key="frame" x="54" y="48" width="43" height="13"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="mobility" id="f8o-ZR-pZy">
+                                            <font key="font" metaFont="system" size="10"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pGc-hD-Hl6">
+                                        <rect key="frame" x="23" y="21" width="104" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="15" id="OIU-xK-Efx"/>
+                                            <constraint firstAttribute="width" constant="100" id="vRe-td-PLx"/>
+                                        </constraints>
+                                        <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" numberOfTickMarks="9" sliderType="linear" id="VHT-dO-wCT"/>
+                                    </slider>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KTC-Lg-65A">
+                                        <rect key="frame" x="48" y="0.0" width="54" height="13"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="death rate" id="aYc-Ag-Op1">
+                                            <font key="font" metaFont="system" size="10"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
+                                    <real value="996"/>
+                                    <real value="994"/>
+                                    <real value="994"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                 </visibilityPriorities>
@@ -790,17 +817,19 @@
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="qi1-qv-ggQ" firstAttribute="leading" secondItem="fNe-FU-uGC" secondAttribute="leading" constant="152" id="7TU-sH-VIy"/>
-                            <constraint firstAttribute="bottom" secondItem="qi1-qv-ggQ" secondAttribute="bottom" id="DMv-W8-fuM"/>
-                            <constraint firstItem="nsK-vb-OAZ" firstAttribute="leading" secondItem="fNe-FU-uGC" secondAttribute="leading" id="HGo-Ld-uFx"/>
-                            <constraint firstItem="nsK-vb-OAZ" firstAttribute="top" secondItem="fNe-FU-uGC" secondAttribute="top" constant="20" id="UAT-vf-M2C"/>
+                            <constraint firstItem="nsK-vb-OAZ" firstAttribute="leading" secondItem="fNe-FU-uGC" secondAttribute="leading" id="6xp-tQ-a3s"/>
+                            <constraint firstItem="qi1-qv-ggQ" firstAttribute="bottom" secondItem="fNe-FU-uGC" secondAttribute="bottom" id="DMv-W8-fuM"/>
+                            <constraint firstItem="nsK-vb-OAZ" firstAttribute="top" secondItem="fNe-FU-uGC" secondAttribute="top" constant="20" id="UVz-aI-wUh"/>
                             <constraint firstItem="qi1-qv-ggQ" firstAttribute="top" secondItem="fNe-FU-uGC" secondAttribute="top" id="UaL-Q0-4Zs"/>
-                            <constraint firstAttribute="trailing" secondItem="qi1-qv-ggQ" secondAttribute="trailing" id="XRT-jm-JEl"/>
-                            <constraint firstItem="qi1-qv-ggQ" firstAttribute="leading" secondItem="nsK-vb-OAZ" secondAttribute="trailing" id="b9r-tw-WPw"/>
+                            <constraint firstItem="qi1-qv-ggQ" firstAttribute="trailing" secondItem="fNe-FU-uGC" secondAttribute="trailing" id="XRT-jm-JEl"/>
+                            <constraint firstItem="qi1-qv-ggQ" firstAttribute="leading" secondItem="nsK-vb-OAZ" secondAttribute="trailing" id="otY-y4-NKv"/>
                         </constraints>
                     </view>
                     <connections>
@@ -811,7 +840,7 @@
                 </viewController>
                 <customObject id="EfM-tw-Sc1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="613" y="222"/>
+            <point key="canvasLocation" x="81" y="636"/>
         </scene>
         <!--Animation View Controller-->
         <scene sceneID="pPZ-ab-zWd">
@@ -827,7 +856,7 @@
                 </viewController>
                 <customObject id="2TA-px-Ehn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="669" y="580"/>
+            <point key="canvasLocation" x="862" y="999"/>
         </scene>
         <!--Line View Controller-->
         <scene sceneID="DfI-jW-2mv">
@@ -843,7 +872,7 @@
                 </viewController>
                 <customObject id="9Jn-fj-uPe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="669" y="957"/>
+            <point key="canvasLocation" x="862" y="1370"/>
         </scene>
     </scenes>
 </document>

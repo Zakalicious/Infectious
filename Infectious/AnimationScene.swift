@@ -8,10 +8,7 @@
 
 import AppKit
 import SpriteKit
-//import GameplayKit
 import QuartzCore
-//import Charts
-
 
 class AnimationScene: SKScene, SKPhysicsContactDelegate {
     
@@ -44,7 +41,7 @@ class AnimationScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func initSprites() {
-        sprites = spritesCollection(count: 300)
+        sprites = spritesCollection(count: kPopulationSize)
         for sprite in sprites {
             addChild(sprite)
         }
@@ -113,7 +110,8 @@ class AnimationScene: SKScene, SKPhysicsContactDelegate {
         let actualY = randomRange(min: -gForce, max: gForce)
                 
         // Pick random sprite
-        let i = Int(randomRange(min: 0, max: 299).rounded())
+        let max = CGFloat(kPopulationSize-1)
+        let i = Int(randomRange(min: 0, max: max).rounded())
         let s = sprites[i]
         if s.physicsBody?.categoryBitMask == PhysicsCategory.None { return } // ignore the dead
         

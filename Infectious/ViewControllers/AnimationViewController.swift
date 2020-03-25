@@ -8,8 +8,6 @@
 
 import AppKit
 import SpriteKit
-import GameplayKit
-import Charts
 
 class AnimationViewController: NSViewController {
 
@@ -21,16 +19,10 @@ class AnimationViewController: NSViewController {
         if let view = self.skView {
             // Load the SKScene from 'AnimationScene.sks'
             if let scene = SKScene(fileNamed: "AnimationScene") {
-                // Set the scale mode to scale to fit the window
+                // Set the scale mode to scale to fill the view
                 scene.scaleMode = .fill
-                //print(view.bounds, scene.frame)
-                //view.setFrameSize(scene.frame)
+                print(view.frame)
                 view.setNeedsDisplay(scene.frame) // needed! why?
-                //print(scene.anchorPoint)
-                scene.anchorPoint = CGPoint(x:0,y:0)
-                //print(scene.anchorPoint)
-                
-                scene.physicsBody = SKPhysicsBody(edgeLoopFrom: scene.frame)
                 
                 // Present the scene
                 view.presentScene(scene)
@@ -42,6 +34,5 @@ class AnimationViewController: NSViewController {
             view.showsNodeCount = true
         }
     }
-
 }
 

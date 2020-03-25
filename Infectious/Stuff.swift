@@ -8,7 +8,9 @@
 
 import SpriteKit
 
-var startDate = CACurrentMediaTime()
+let kPopulationSize: Int = 300
+
+//var startDate = CACurrentMediaTime()
 var gIteration = 0
 var gForce: CGFloat = 100.0
 
@@ -53,7 +55,8 @@ func startMotion() {
 func startInfection() {
     // start infection
     let _ = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
-        let i = Int(randomRange(min: 0, max: 299).rounded())
+        let max = CGFloat(kPopulationSize-1)
+        let i = Int(randomRange(min: 0, max: max).rounded())
         
         //startDate = CACurrentMediaTime()
         for sprite in sprites {
@@ -85,7 +88,8 @@ func healOrDie(node: SKShapeNode) {
             node.physicsBody?.contactTestBitMask = PhysicsCategory.None
             node.physicsBody?.collisionBitMask = PhysicsCategory.None
             popSummary()
-            node.fillColor = .clear
+            node.fillColor = .black
+            node.physicsBody?.velocity = CGVector()
             //node.removeFromParent()
         } else {
             //let t = CACurrentMediaTime() - startDate
@@ -114,7 +118,7 @@ func healOrDie(node: SKShapeNode) {
             }
         }
         let total = sSum + iSum + rSum
-        let dead = 300 - total
+        let dead = kPopulationSize - total
         
         //print("S",sSum,"I",iSum,"R",rSum,"D", dead)
         
@@ -137,8 +141,8 @@ func analyzeSprites() {
         
         let infectionDate = sprite.userData?.value(forKey: "keyInfectedDate") as? Int
         if infectionDate ?? 0 > 0 {
-            print("keyInfectedDate", sprite.userData?.value(forKey: "keyInfectedDate"))
-            print(sprite.userData?.value(forKey: "keyHasInfected"))
+            //print("keyInfectedDate", sprite.userData?.value(forKey: "keyInfectedDate"))
+            //print(sprite.userData?.value(forKey: "keyHasInfected"))
             switch sprite.userData?.value(forKey: "keyHasInfected") as! Int {
             case 0:
                 count0 += 1
@@ -156,6 +160,10 @@ func analyzeSprites() {
         }
     }
     print ("analyzeSprites keyHasInfected", count0,count1,count2,count3, count4, countOther)
+    let total = count0+count1+count2+count3+count4
+    
+    let avg = Double((count1+2*count2+3*count3+4*count4)) / Double(total)
+    print ("analyzeSprites keyHasInfected R0",avg)
 }
 
 

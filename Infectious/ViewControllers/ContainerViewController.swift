@@ -59,9 +59,6 @@ class ContainerViewController: NSViewController {
     
     override func viewDidLoad() {
       super.viewDidLoad()
-        let sliderFrame = NSRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 120, height: 40))
-        let slider = RangeSlider(frame:sliderFrame)
-
     }
 
 }

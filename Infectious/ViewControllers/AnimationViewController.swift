@@ -22,13 +22,13 @@ class AnimationViewController: NSViewController {
             // Load the SKScene from 'AnimationScene.sks'
             if let scene = SKScene(fileNamed: "AnimationScene") {
                 // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFit
-                print(view.bounds, scene.frame)
+                scene.scaleMode = .fill
+                //print(view.bounds, scene.frame)
                 //view.setFrameSize(scene.frame)
-                view.setNeedsDisplay(scene.frame)
-                print(scene.anchorPoint)
+                view.setNeedsDisplay(scene.frame) // needed! why?
+                //print(scene.anchorPoint)
                 scene.anchorPoint = CGPoint(x:0,y:0)
-                print(scene.anchorPoint)
+                //print(scene.anchorPoint)
                 
                 scene.physicsBody = SKPhysicsBody(edgeLoopFrom: scene.frame)
                 

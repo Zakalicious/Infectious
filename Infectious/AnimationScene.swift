@@ -8,30 +8,9 @@
 
 import AppKit
 import SpriteKit
-import GameplayKit
+//import GameplayKit
 import QuartzCore
-import Charts
-
-var startDate = CACurrentMediaTime()
-
-struct Sums {
-    var x = 0.0
-    var s = 0
-    var i = 0
-    var r = 0
-    var d = 0
-}
-
-var sir: [Sums] = []
-
-struct PhysicsCategory {
-    static let None     : UInt32 = 0
-    static let All      : UInt32 = UInt32.max
-    static let Sus      : UInt32 = 0b1       // 1
-    static let Inf      : UInt32 = 0b10      // 2
-    static let Rec      : UInt32 = 4
-    static let Edge      : UInt32 = 8
-}
+//import Charts
 
 
 class AnimationScene: SKScene, SKPhysicsContactDelegate {
@@ -48,12 +27,19 @@ class AnimationScene: SKScene, SKPhysicsContactDelegate {
         
         physicsWorld.contactDelegate = self
         
-        let edge = SKPhysicsBody(edgeLoopFrom: self.frame)
+        let rect = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
+        let circle = CGPath(ellipseIn: rect, transform: nil)
+        //print(circle)
+        //print("self.frame",self.frame)
+        //let edge = SKPhysicsBody(edgeLoopFrom: self.frame)  // rect scene
+        let edge = SKPhysicsBody(edgeLoopFrom : circle)       // petri dish
         edge.categoryBitMask = PhysicsCategory.Edge
         edge.contactTestBitMask = PhysicsCategory.All
         edge.collisionBitMask = PhysicsCategory.All
+        self.physicsBody = edge
         
         initSprites()
+        popSummary()
         startInfection()
     }
     
@@ -64,22 +50,28 @@ class AnimationScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    private func spritesCollection(count: Int) -> [SKShapeNode] {
+    func spritesCollection(count: Int) -> [SKShapeNode] {
 
         var i = 0
         for _ in 0..<count {
             //let sprite = SKSpriteNode(imageNamed: "blueDot")
-            let sprite = SKShapeNode(circleOfRadius: 6)
+            let sprite = SKShapeNode(circleOfRadius: 3)
             sprite.name = String(i)
             sprite.fillColor = .gray
             sprite.strokeColor = .clear
             
-            // giving the sprites a random position
-            let x = CGFloat(arc4random() % UInt32(size.width))
-            let y = CGFloat(arc4random() % UInt32(size.height))
+            // for petri dish scene
+            let a = random() * 2 * .pi
+            let r = size.width / 2 * sqrt(random())
+            let x = r * cos(a) + size.width / 2
+            let y = r * sin(a) + size.width / 2
+            
+            // for rect scene
+            //let x = CGFloat(arc4random() % UInt32(size.width))
+            //let y = CGFloat(arc4random() % UInt32(size.width))
             sprite.position = CGPoint(x:x, y:y)
             
-            sprite.physicsBody = SKPhysicsBody(circleOfRadius: 6) //sprite.size.height / 2.0)
+            sprite.physicsBody = SKPhysicsBody(circleOfRadius: 3)
             sprite.physicsBody?.isDynamic = true
             sprite.physicsBody?.allowsRotation = false
             sprite.physicsBody?.affectedByGravity = false
@@ -91,7 +83,7 @@ class AnimationScene: SKScene, SKPhysicsContactDelegate {
             
             sprite.physicsBody?.usesPreciseCollisionDetection = true
             
-            let actualX = randomRange(min: -200, max: 200)
+            let actualX = randomRange(min: -100, max: 100)
             let actualY = randomRange(min: -100, max: 100)
             sprite.physicsBody?.velocity = CGVector(dx: actualX, dy: actualY)
             sprite.physicsBody?.friction = 0
@@ -100,9 +92,10 @@ class AnimationScene: SKScene, SKPhysicsContactDelegate {
             sprite.blendMode = .replace
             //sprite.physicsBody?.applyForce(CGVector(dx: actualX, dy: actualY))
             sprite.userData = [
-                "keyInfectedDate" : 0.0,
-                "keyHealedDate" : 0.0,
-                "keyDeathDate" : 0.0
+                "keyInfectedDate" : 0,
+                "keyHealedDate" : 0,
+                "keyDeathDate" : 0,
+                "keyHasInfected" : 0
             ]
             
             //print(sprite.name, sprite.physicsBody!.categoryBitMask, sprite.physicsBody!.categoryBitMask, sprite.physicsBody!.collisionBitMask)
@@ -113,24 +106,18 @@ class AnimationScene: SKScene, SKPhysicsContactDelegate {
         return sprites
     }
     
-    func moveSprite() {
+    func applyForceToSprite() {
         
-        // Determine where to spawn the monster along the Y axis
-        let actualX = randomRange(min: -200, max: 200)
-        let actualY = randomRange(min: -100, max: 100)
-        
-        // Determine speed of the monster
-        let actualDuration = randomRange(min: CGFloat(0.01), max: CGFloat(0.20))
-        
-        // Pick i
+        // Determine force
+        let actualX = randomRange(min: -gForce, max: gForce)
+        let actualY = randomRange(min: -gForce, max: gForce)
+                
+        // Pick random sprite
         let i = Int(randomRange(min: 0, max: 299).rounded())
-        
-        // Create the actions
-        //let actionMove = SKAction.move(by: CGVector(dx: actualX, dy: actualY), duration: TimeInterval(actualDuration))
         let s = sprites[i]
-        s.physicsBody?.applyForce(CGVector(dx: actualX, dy: actualY))
-        //s.run(SKAction.sequence([actionMove]))
+        if s.physicsBody?.categoryBitMask == PhysicsCategory.None { return } // ignore the dead
         
+        s.physicsBody?.applyForce(CGVector(dx: actualX, dy: actualY))
     }
     
     func didBegin(_ contact: SKPhysicsContact){
@@ -138,19 +125,28 @@ class AnimationScene: SKScene, SKPhysicsContactDelegate {
         //print(contact.bodyA.categoryBitMask, contact.bodyB.categoryBitMask )
         if contact.bodyA.categoryBitMask == PhysicsCategory.Sus && contact.bodyB.categoryBitMask == PhysicsCategory.Inf {
             popSummary()
+            let infectiousNode = contact.bodyB.node as! SKShapeNode
+            var hasInfected = infectiousNode.userData?.value(forKey: "keyHasInfected") as! Int
+            hasInfected += 1
+            infectiousNode.userData?.setValue(hasInfected, forKey: "keyHasInfected")
+            
             let node = contact.bodyA.node as! SKShapeNode
             //print("infection",node.name, physicsBody?.categoryBitMask)
             healOrDie(node: node)
         }
         if contact.bodyB.categoryBitMask == PhysicsCategory.Sus && contact.bodyA.categoryBitMask == PhysicsCategory.Inf {
             popSummary()
+            let infectiousNode = contact.bodyA.node as! SKShapeNode
+            var hasInfected = infectiousNode.userData?.value(forKey: "keyHasInfected") as! Int
+            hasInfected += 1
+            infectiousNode.userData?.setValue(hasInfected, forKey: "keyHasInfected")
+
             let node = contact.bodyB.node as! SKShapeNode
             //print("infection",node.name, physicsBody?.categoryBitMask)
             node.physicsBody?.categoryBitMask = PhysicsCategory.Inf
             node.fillColor = .red
             healOrDie(node: node)
         }
-
     }
     
     func touchDown(atPoint pos : CGPoint) {
@@ -184,7 +180,7 @@ class AnimationScene: SKScene, SKPhysicsContactDelegate {
         animationIsRunning = !animationIsRunning
         if animationIsRunning {
         } else {
-            stopAnimation()
+            stopMotion()
         }
     }
     
@@ -210,89 +206,9 @@ class AnimationScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         
-        if animationIsRunning { moveSprite() }
+        if animationIsRunning {
+            gIteration += 1
+            applyForceToSprite() }
     }
-}
-
-
-func startInfection() {
-    // start infection
-    let _ = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
-        let i = Int(randomRange(min: 0, max: 299).rounded())
-        
-        startDate = CACurrentMediaTime()
-        for sprite in sprites {
-            if sprite.name == String(i) {
-                
-                let node = sprites[i]
-                healOrDie(node: node)
-                
-            }
-        }
-    }
-}
-
-func healOrDie(node: SKShapeNode) {
-    
-    node.physicsBody?.categoryBitMask = PhysicsCategory.Inf
-    node.fillColor = .red
-    let t = CACurrentMediaTime() - startDate
-    node.userData?.setObject(String(t), forKey: "keyInfectedDate" as NSString)
-    
-    let timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { timer in
-        //heal ot die1
-        let p = randomRange(min: 0, max: 99)
-        if p < 10 {
-            let t = CACurrentMediaTime() - startDate
-            node.userData?.setObject(String(t), forKey: "keyDeathDate" as NSString)
-            
-            node.physicsBody?.categoryBitMask = PhysicsCategory.None
-            popSummary()
-            //node.fillColor = .black
-            node.removeFromParent()
-        } else {
-            let t = CACurrentMediaTime() - startDate
-            node.userData?.setObject(String(t), forKey: "keyHealedDate" as NSString)
-            node.physicsBody?.categoryBitMask = PhysicsCategory.Rec
-            node.fillColor = .blue
-            popSummary()
-        }
-    }
-}
-    
-    func popSummary() {
-        var sSum = 0, iSum = 0, rSum = 0
-        let x = CACurrentMediaTime() - startDate
-        
-        for sprite in sprites {
-            if sprite.physicsBody?.categoryBitMask == PhysicsCategory.Sus {
-                sSum += 1
-            }
-            if sprite.physicsBody?.categoryBitMask == PhysicsCategory.Rec {
-                rSum += 1
-            }
-            if sprite.physicsBody?.categoryBitMask == PhysicsCategory.Inf {
-                iSum += 1
-            }
-        }
-        let total = sSum + iSum + rSum
-        let dead = 300 - total
-        
-        //print("S",sSum,"I",iSum,"R",rSum,"D", dead)
-        
-        let sumElement = Sums(x: x, s: sSum, i: iSum, r: rSum, d: dead)
-        sir.append(sumElement)
-        
-        //chartVC.view.needsDisplay = true
-        //chartVC.view.upda
-    }
-
-
-func random() -> CGFloat {
-    return CGFloat(Double(arc4random()) / 0xFFFFFFFF)
-}
-
-func randomRange(min: CGFloat, max: CGFloat) -> CGFloat {
-    return random() * (max - min) + min
 }
 

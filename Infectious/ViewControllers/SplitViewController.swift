@@ -10,11 +10,11 @@ import AppKit
 
 class SplitViewController: NSSplitViewController {
 
-  //Outlet to the menu pane
-  //@IBOutlet weak var menuPane: NSSplitViewItem!
+    @IBOutlet weak var leftItem: NSSplitViewItem!
+    @IBOutlet weak var rightItem: NSSplitViewItem!
 
+    
   override func viewDidLoad() {
     super.viewDidLoad()
-    
   }
 }

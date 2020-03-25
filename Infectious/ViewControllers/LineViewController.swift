@@ -21,7 +21,7 @@ import Cocoa
 import Charts
 
 var chartVC = NSViewController()
-//var lineViewUpdateTimer = Timer()
+var lineViewUpdateTimer = Timer()
 
 open class LineViewController: NSViewController {
     @IBOutlet var lineChartView: LineChartView!
@@ -32,20 +32,56 @@ open class LineViewController: NSViewController {
         
         chartVC = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.start), name: Notification.Name(rawValue: "start"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.stop), name: Notification.Name(rawValue: "stop"), object: nil)
     }
     
     override open func viewWillAppear() {
         
         self.lineChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
-        self.lineChartView.chartDescription?.text = "spatial temporal SIR results"
-        let _ = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { timer in
+        self.lineChartView.chartDescription?.text = "spatial temporal SIRD population data"
+        //lineChartView.AxisBase.  setDrawGridLines = false
+        var axis = lineChartView.xAxis as AxisBase
+        axis.drawGridLinesEnabled = false
+        axis.axisMinimum = 0.0
+        
+        axis = lineChartView.getAxis(.left)
+        axis.drawGridLinesEnabled = false
+        
+        axis = lineChartView.getAxis(.right)
+        axis.drawGridLinesEnabled = false
+        axis.drawLabelsEnabled = false
+        axis.drawAxisLineEnabled = false
+        
+        //print(lineChartView.xAxis as? AxisBase)
+        startUpdateTimer()
+    }
+    
+    func startUpdateTimer() {
+        lineViewUpdateTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { timer in
             
             if animationIsRunning { self.updateChartData() }
         }
+    }
+    
+    func stopUpdateTimer() {
+        if lineViewUpdateTimer.isValid { lineViewUpdateTimer.invalidate() }
         
     }
     
-    public func updateChartData() {
+    @objc func stop()  {
+        print("received stop")
+        stopUpdateTimer()
+    }
+    
+    @objc func start()  {
+        print("received start")
+        lineChartView.data?.clearValues()
+        lineChartView.setNeedsDisplay(self.view.frame)
+        startUpdateTimer()
+    }
+    
+     func updateChartData() {
 
         let data = LineChartData()
 
@@ -55,16 +91,17 @@ open class LineViewController: NSViewController {
         var dEntries : [ChartDataEntry] = []
 
         for e in sir {
-            var val = ChartDataEntry(x: e.x, y: Double(e.s))
+            let x = Double(e.x)
+            var val = ChartDataEntry(x: x, y: Double(e.s))
             sEntries.append(val)
             
-            val = ChartDataEntry(x: e.x, y: Double(e.i))
+            val = ChartDataEntry(x: x, y: Double(e.i))
             iEntries.append(val)
 
-            val = ChartDataEntry(x: e.x, y: Double(e.r))
+            val = ChartDataEntry(x: x, y: Double(e.r))
             rEntries.append(val)
 
-            val = ChartDataEntry(x: e.x, y: Double(e.d))
+            val = ChartDataEntry(x: x, y: Double(e.d))
             dEntries.append(val)
         }
         
